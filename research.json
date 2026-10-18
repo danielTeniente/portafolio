@@ -1,0 +1,52 @@
+{
+  "author": "Daniel Díaz-Bedoya",
+  "orcid": "https://orcid.org/0009-0000-3222-6037",
+  "purpose": "Demonstrate Daniel Díaz-Bedoya’s understanding of time-series forecasting to employers through a reproducible experiment connected to his published research: forecast design, temporal leakage prevention, chronological validation, small-sample limitations and accuracy–complexity trade-offs.",
+  "relationship": "New benchmark results under a distinct day-ahead protocol; not a reproduction of published metrics or a replacement of the articles' conclusions.",
+  "publications": [
+    {
+      "title": "Forecasting Univariate Solar Irradiance using Machine learning models: A case study of two Andean Cities",
+      "year": 2023,
+      "journal": "Energy Conversion and Management",
+      "volume": "296",
+      "article": "117618",
+      "doi": "https://doi.org/10.1016/j.enconman.2023.117618",
+      "authors": [
+        "Daniel Díaz-Bedoya",
+        "Mario González-Rodríguez",
+        "Jean-Michel Clairand",
+        "Xavier Serrano-Guerrero",
+        "Guillermo Escrivá-Escrivá"
+      ],
+      "context": "Univariate solar-irradiance forecasting in Quito and Cuenca using AR, Random Forest and LSTM. The published abstract reports LSTM outperforming AR and comparable accuracy to Random Forest.",
+      "data_description": "The owner identifies the supplied REMMAQ paragraph as their writing in this first article. Its text was located in Section 3.4 of the institutional manuscript.",
+      "manuscript_url": "https://riunet.upv.es/server/api/core/bitstreams/14e2a183-681f-45ce-af52-111a74499ccd/content",
+      "protocol_difference": "The article describes next-hour forecasting and an 08:00–17:00 UTC−5 window; this portfolio forecasts the following calendar day's 06:00–18:00 profile from the previous day. Model definitions, tuning and evaluation also differ."
+    },
+    {
+      "title": "Solar Irradiance Forecasting With Deep Learning and Ensemble Models: LSTM, Random Forest and Extra Trees With Multivariate Meteorological Data",
+      "year": 2025,
+      "journal": "IET Smart Grid",
+      "volume": "8",
+      "article": "e70019",
+      "doi": "https://doi.org/10.1049/stg2.70019",
+      "authors": [
+        "Daniel Díaz-Bedoya",
+        "Mario González-Rodríguez",
+        "Xavier Serrano-Guerrero",
+        "Jean-Michel Clairand"
+      ],
+      "context": "Related multivariate solar-irradiance research using LSTM, Random Forest and Extra Trees in Cuenca. It is included as research background, not evidence that this Quito CSV was used in that study.",
+      "publisher_url": "https://ietresearch.onlinelibrary.wiley.com/doi/full/10.1049/stg2.70019"
+    }
+  ],
+  "author_clarification": "The author explains that Cuenca was the main dataset and Quito played a supporting role in the earlier research. This portfolio isolates Quito to demonstrate time-series concepts; it is not a replication of the articles.",
+  "demonstrated_skills": [
+    "Define a 24-hour information window and next-day target without confusing daylight steps with clock hours",
+    "Prevent future-data leakage in preprocessing, model selection and early stopping",
+    "Use expanding chronological validation and a separate historical test period",
+    "Interpret short validation windows, temporal dependence and initialization sensitivity",
+    "Compare against seasonal persistence and weigh accuracy against computation and complexity",
+    "Separate findings across datasets and forecasting protocols"
+  ]
+}

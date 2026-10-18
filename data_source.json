@@ -1,0 +1,52 @@
+{
+  "provider": "Red Metropolitana de Monitoreo Atmosférico de Quito (REMMAQ)",
+  "portal_url": "https://datosambiente.quito.gob.ec/",
+  "attribution_basis": "REMMAQ attribution supplied by the author and corroborated in Section 3.4 of the 2023 article; the exact CSV export has not been matched to a portal record.",
+  "background_period_reported": "2004–2018",
+  "subset_selection_reported": "The supplied study description says the 2017–2018 subset was selected following a data-quality review. Its criteria, quality flags, and review report have not been supplied or independently verified.",
+  "background_variables_reported": [
+    "solar irradiance",
+    "wind velocity",
+    "temperature",
+    "precipitation",
+    "humidity"
+  ],
+  "csv_columns_observed": [
+    "Date_time",
+    "RS",
+    "VEL",
+    "TMP",
+    "HUM"
+  ],
+  "csv_period_observed": "2017-02-01 00:00:00 to 2018-06-30 23:00:00",
+  "precipitation_in_csv": false,
+  "publication_permission": {
+    "status": "confirmed_by_project_owner",
+    "date": "2026-10-18",
+    "statement": "The project owner confirmed permission to publish the solar data, including observations embedded in the dashboard.",
+    "scope_note": "Owner confirmation is recorded separately from the still-unverified source license and export metadata. No general downstream reuse license is asserted."
+  },
+  "pending_metadata": [
+    "specific dataset/export URL",
+    "station",
+    "RS units",
+    "timestamp timezone",
+    "measurement aggregation",
+    "reuse license",
+    "underlying quality-review documentation"
+  ],
+  "portal_check": {
+    "date": "2026-10-18",
+    "result": "Automated access returned HTTP 403; portal content was not independently inspected."
+  },
+  "research_context": {
+    "author": "Daniel Díaz-Bedoya",
+    "orcid": "https://orcid.org/0009-0000-3222-6037",
+    "first_article_doi": "https://doi.org/10.1016/j.enconman.2023.117618",
+    "paragraph_location": "Section 3.4, Database and normalization",
+    "paragraph_authorship": "The project owner identifies the supplied paragraph as their writing in their first article.",
+    "text_verification": "The supplied REMMAQ passage was located in the institutional manuscript of the 2023 article.",
+    "author_clarification": "The author explains that Cuenca was the main dataset and Quito played a supporting role in the earlier research. This portfolio isolates Quito to demonstrate time-series concepts; it is not a replication of the articles."
+  },
+  "paper_measurement_context": "The 2023 paper describes hourly average global solar irradiance in W/m² and an 08:00–17:00 UTC−5 analysis window. This is published context, not independent verification of this export metadata."
+}
