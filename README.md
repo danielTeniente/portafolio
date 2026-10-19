@@ -6,14 +6,21 @@ Two applied projects demonstrate how I turn time-series data into forecasts, eva
 
 **The main findings:** a regularized linear model outperformed the tested neural networks on the Quito benchmark; in the tail-risk worked example, all four classical models underestimated the same extreme, while changing exposure changed the outcome from no overload to severe capacity failure.
 
-## Explore the two projects
+## Explore the projects
 
 | Project | Question | Start here |
 |---|---|---|
 | **Quito Solar** · real observations | Does a more complex model improve tomorrow’s daylight forecast enough to justify its complexity? | [Dashboard](docs/index.html) · [Full methodology](SOLAR_FORECASTING.md) |
 | **Tail Risk Lab** · synthetic experiment | What happens when a forecast becomes a commitment, and an extreme exceeds expectations? | [Dashboard](docs/risk/index.html) · [Full methodology](RISK_LAB.md) |
+| **2048 Learning Lab** · reinforcement learning | How does a compact Q-table compare with dense and convolutional deep Q-networks? | [Play and compare](docs/2048/index.html) · [Learning protocol](docs/2048/learning.md) · [Environment](docs/2048/environment.md) |
 
-Download or clone the repository and open either HTML file in your browser. Both dashboards work offline without a server or build step. GitHub’s repository view displays the HTML source; open the downloaded file to interact with it.
+Download or clone the repository and open a dashboard HTML file in your browser. All three dashboards work offline without a server or build step. GitHub’s repository view displays the HTML source; open the downloaded file to interact with it.
+
+The **2048 Learning Lab** includes human play, recorded training animations, and synchronized checkpoint comparisons for three trained agents. Tabular Q-learning uses **largest tile + empty-cell count**; dense DQN and CNN-DQN use the full board as scaled tile exponents, **without one-hot encoding**. Each trains for 300 episodes. On 100 separate final games, mean scores are **1,011.96 (Q), 1,494.56 (dense DQN), and 1,679.04 (CNN-DQN)**, versus **1,071.68 for random legal moves**. None reached 2048 in that evaluation. This is a short, single-seed experiment, not evidence that an architecture universally wins. Reproduce with `python -m src.train_2048 --episodes 300`; inspect the [saved report](results/2048/report.json). The offline page replays real trajectories rather than retraining in the browser.
+
+**Stage 2 adds corner-and-snake reward shaping to every model**, retrained from scratch with the same seed and budget. Stage 1 artifacts are preserved. On the same 100 final games, Stage 2 means are **1,776.52 (Q), 1,572.04 (dense DQN), and 1,741.76 (CNN-DQN)**: increases of 75.6%, 5.2%, and 3.7%. None reached 2048. The dashboard includes an experiment-stage selector, a comparison table, baseline curve overlays, and the shaped reward breakdown in training replays. Read the [Stage 2 protocol](docs/2048/stage2.md) and [report](results/2048-stage2/report.json); reproduce with `python -m src.train_2048 --episodes 300 --reward-mode snake`. The matched evaluation games were already inspected in Stage 1, so the comparison is descriptive rather than fresh confirmatory evidence.
+
+Verify with `node --test tests/2048_environment.test.cjs tests/2048_results.test.cjs tests/2048_motion.test.cjs` and `python -m unittest tests.test_2048 tests.test_2048_shaping -v`. Python training and browser play are tested for identical seeded transitions; tests also verify shaping, model weights, and preservation of Stage 1. See the [learning protocol](docs/2048/learning.md) for architecture, evaluation, and reward details.
 
 ## 1. Quito Solar — forecasting with a fair comparison
 
@@ -144,3 +151,21 @@ The `docs/` directory is prepared for GitHub Pages. The project owner confirmed 
 6. Verify both live dashboards, then add their actual URLs to this README.
 
 The site needs no Python server or model training during deployment. The `docs/.nojekyll` marker disables Jekyll processing. Future pushes to the publishing branch update the website; include regenerated dashboard data when publishing new model results.
+
+## New Stage 3: afterstate CNN
+
+The approved replacement evaluates each pre-spawn move preview with a shared scalar-output CNN. Its final mean is 2,051.48 (SD 1,281.01), versus Stage 2 CNN 1,741.76. The single-seed comparison uses the same 300-episode budget; no evaluation game reached 2048. Stages 3–4 have a separate CNN-only replay with an expandable decision-preview inspector. Q and dense DQN remain Stage 2 references, not new Stage 3 runs. See [afterstate protocol](docs/2048/afterstate.md).
+
+## Stage 4: hybrid afterstate CNN
+
+The CNN grid branch is joined with a separate seven-statistic branch. Final mean: 5,262.88 versus Stage 3 2,051.48, on 100 matched games after 300 training episodes. Highest tile 1024; no 2048 wins. Final results now separate Stages 1–2 (three models each) from Stages 3–4 (CNN only). The two independent replay sections separate Stages 1–2 from Stages 3–4, and the Stage 4 preview inspector lists the actual scaled feature inputs. Run `python -m src.train_2048_hybrid`; see [Stage 4 protocol](docs/2048/hybrid.md).
+
+### Independent experiment sections
+
+The page now groups the complete experience, not just the final tables. Stages 1–2 has its own three-model replay, stage selector, checkpoints, controls, curves and six-row final results. Stages 3–4 has a separate CNN-only replay, stage selector, checkpoints, controls, curves and two-row final results. Playback and selections do not affect the other section. Single-model comparison in the first section never includes Stages 3–4. The overall ranking remains a separate cross-experiment summary between the groups.
+
+## Final 2048 presentation
+
+The published portfolio includes Stages 1–4 and ends at the hybrid CNN. Video exports, preview screenshots, duplicate-penalty experiments and Stage 5 are excluded from Git. Training code, original inputs, final reports and integrity manifests are retained for reproducibility. Saved model weights and standalone Q-table files are excluded; regenerate them locally by running the training commands. Browser replay data remains included because the animations need it. Tests that require saved model weights skip when those files are absent.
+
+Validation: `python -m unittest tests.test_2048 tests.test_2048_shaping tests.test_2048_afterstate tests.test_2048_hybrid` and `node --test tests/2048_environment.test.cjs tests/2048_motion.test.cjs tests/2048_results.test.cjs`.

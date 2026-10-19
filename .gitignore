@@ -3,3 +3,55 @@ __pycache__/
 *.pyc
 .DS_Store
 .mpl-cache/
+
+# Portfolio export: publish only the final 2048 dashboard (Stages 1Ã¢â‚¬â€œ4).
+/docs/2048/*
+!/docs/2048/index.html
+!/docs/2048/style.css
+!/docs/2048/learning.css
+!/docs/2048/motion.css
+!/docs/2048/app.js
+!/docs/2048/engine.js
+!/docs/2048/motion.js
+!/docs/2048/learning.js
+!/docs/2048/data.js
+!/docs/2048/stage2-data.js
+!/docs/2048/afterstate-data.js
+!/docs/2048/hybrid-data.js
+!/docs/2048/environment.md
+!/docs/2048/learning.md
+!/docs/2048/stage2.md
+!/docs/2048/afterstate.md
+!/docs/2048/hybrid.md
+
+# Keep final reports and integrity manifests for the active stages.
+/results/2048*
+!/results/2048/
+!/results/2048-stage2/
+!/results/2048-afterstate/
+!/results/2048-hybrid/
+/results/2048*/*
+!/results/2048*/report.json
+!/results/2048-baseline-hashes.json
+!/results/2048-pre-stage4-hashes.json
+/results/portfolio-readme-before-visual-export.md
+
+# Models are regenerated locally; browser replay data stays included.
+*.pt
+*.pth
+*.ckpt
+*.onnx
+*.pkl
+*.joblib
+**/q_table.json
+
+# Retired experiment code/tests and local video production stay local.
+/src/train_2048_specialists.py
+/src/evaluate_2048_reference.py
+/src/render_2048_linkedin.py
+/tests/test_2048_specialists.py
+/tests/2048_specialists.test.cjs
+/tests/test_2048_duplicates.py
+*.mp4
+*.mov
+*.webm

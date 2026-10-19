@@ -1,0 +1,22 @@
+[
+  {
+    "path": "results/2048/report.json",
+    "sha256": "7b3934dd5aaf013cffbbd26c2435a7e3ee2f31de794b9f6e8fff3380149439ed"
+  },
+  {
+    "path": "results/2048/dqn.pt",
+    "sha256": "337ae9b9dabcb078b0e707501a8331fe4502c070ae523576b5b41962b8705b99"
+  },
+  {
+    "path": "results/2048/cnn.pt",
+    "sha256": "9d1681e5ffdae2eb884e671067ebbe0f69ce2001a313d07d35ee2084246c91a3"
+  },
+  {
+    "path": "results/2048/q_table.json",
+    "sha256": "20bc6f44babde33121ff7a02ca84e065532847690ff748346605dfc3385e6b31"
+  },
+  {
+    "path": "docs/2048/data.js",
+    "sha256": "b0403076697d74f850afba56664886e5f685bd9fd06f4c8fa05eca49ca943761"
+  }
+]

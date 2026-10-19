@@ -1,0 +1,14 @@
+[
+  {
+    "path": "results/2048-afterstate/cnn.pt",
+    "sha256": "f17ce983cd82f31959f21e8ed2d3fdc665f271a7fccb481b1f624b5363c0f187"
+  },
+  {
+    "path": "results/2048-afterstate/report.json",
+    "sha256": "b4bb040c47d02f99796ad25b0927e6b27c5fce45e5ab04ea1065b9f68d3b1a08"
+  },
+  {
+    "path": "docs/2048/afterstate-data.js",
+    "sha256": "b8eb0b6d73e4aa16533c731a58490bd9a5e14f54d4d77f5916e39aaaa01d8412"
+  }
+]
